@@ -1,0 +1,6 @@
+{
+  "name": "TRACEBACK",
+  "description": "AI-assisted Python debugging investigation platform with deterministic AST analysis, architecture graph, failure isolation, test reproduction, fix synthesis, and sandbox verification.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile data for authenticated developers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "email", "createdAt"]
+    },
+    "InvestigationRecord": {
+      "title": "InvestigationRecord",
+      "description": "Stored forensic investigation run and verification status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "failureId": { "type": "string" },
+        "status": { "type": "string" },
+        "rootCause": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "userId", "failureId", "status", "timestamp"]
+    },
+    "ProjectSession": {
+      "title": "ProjectSession",
+      "description": "Stored metadata of an uploaded project analysis session",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "projectName": { "type": "string" },
+        "fileCount": { "type": "number" },
+        "testCount": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "projectName", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Private profile document for each user"
+    },
+    "/users/{userId}/investigations/{investigationId}": {
+      "schema": "InvestigationRecord",
+      "description": "User specific incident investigation logs and verified patches"
+    },
+    "/users/{userId}/projects/{projectSessionId}": {
+      "schema": "ProjectSession",
+      "description": "History of uploaded project DNA scan sessions"
+    }
+  }
+}
